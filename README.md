@@ -31,4 +31,18 @@ The system includes:
 ---
 
 ## 📂 Folder Structure
+health-risk-predictor/
+│
+├── app.py # Flask web app entry point
+├── backend.py # Core ML logic & helper functions
+├── templates/
+│ └── index.html # Frontend HTML page
+├── static/
+│ ├── style.css # Modern gradient CSS
+│ └── script.js # Fetch + result rendering
+├── heart.csv # Dataset for heart model (used in training)
+├── stroke.csv # Dataset for stroke model
+├── diabetes.csv # Dataset for diabetes model
+└── README.md
+
 
