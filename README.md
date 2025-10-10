@@ -1,6 +1,6 @@
-# Health-Risk-Prediction
+<img width="389" height="877" alt="Screenshot 2025-10-10 211212" src="https://github.com/user-attachments/assets/cd569b8c-bc48-45e7-b2e8-7bc108a833ec" /># Health-Risk-Prediction
 A Flask-based web application that predicts health risks such as heart disease, diabetes, and stroke using machine learning models trained with scikit-learn. Includes an elegant, modern front-end with live predictions and interactive UI.
-# 🩺 Health Risk Predictor Web App
+# Health Risk Predictor Web App
 A complete **Flask + Machine Learning** web application that predicts risks for **Heart Disease**, **Stroke**, and **Diabetes** based on user health inputs like age, BMI, blood pressure, cholesterol, and glucose levels.
 The system includes:
 - A **Flask backend** with trained ML models (Random Forest)
@@ -9,7 +9,7 @@ The system includes:
 - Modular backend structure for easy extension
 ---
 
-## 🚀 Features
+## Features
 
 ✅ Predicts:
 - Heart Disease Risk  
@@ -30,7 +30,7 @@ The system includes:
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 health-risk-predictor/
 │
 ├── app.py # Flask web app entry point
@@ -44,5 +44,9 @@ health-risk-predictor/
 ├── stroke.csv # Dataset for stroke model
 ├── diabetes.csv # Dataset for diabetes model
 └── README.md
+
+##Screenshot
+
+<img width="389" height="877" alt="Screenshot 2025-10-10 211212" src="https://github.com/user-attachments/assets/12a3321d-44b2-4bca-ac95-9d1f0cfc6ea2" />
 
 
