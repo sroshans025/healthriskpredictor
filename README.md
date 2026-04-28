@@ -1,50 +1,75 @@
-# Health Risk Predictor Web App
-A complete **Flask + Machine Learning** web application that predicts risks for **Heart Disease**, **Stroke**, and **Diabetes** based on user health inputs like age, BMI, blood pressure, cholesterol, and glucose levels.
-The system includes:
-- A **Flask backend** with trained ML models (Random Forest)
-- A **modern responsive UI** built with HTML, CSS, and JavaScript
-- Real-time health risk prediction with animated feedback
-- Modular backend structure for easy extension
----
+# 🩺 Health Risk Predictor
 
-## Features
+A cutting-edge, clinical AI diagnostic web application that utilizes **Machine Learning** to perform multi-disease risk assessments based on patient biometrics and vital statistics.
 
-✅ Predicts:
-- Heart Disease Risk  
-- Diabetes Risk (with Glucose Level Categorization)  
-- Stroke Risk  
-- Blood Pressure Category (Normal, Elevated, Stage 1/2, Crisis)
-
-✅ Tech Stack:
-- **Frontend:** HTML, CSS (Glassmorphism UI), JavaScript  
-- **Backend:** Flask (Python)  
-- **ML Models:** Scikit-learn (RandomForestClassifier)  
-- **Data Processing:** Pandas, LabelEncoder, StandardScaler
-
-✅ Modern Interface:
-- Gradient background and glass-card style  
-- Animated loading and result transitions  
-- Color-coded risk cards (safe vs warning)
+![UI Preview](https://img.shields.io/badge/UI-Clinical_Glassmorphism-06B6D4?style=for-the-badge)
+![Tech Stack](https://img.shields.io/badge/Flask-0B1121?style=for-the-badge&logo=flask&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Vercel Ready](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel&logoColor=white)
 
 ---
 
-## Folder Structure
-health-risk-predictor/
-│
-├── app.py # Flask web app entry point
-├── backend.py # Core ML logic & helper functions
-├── templates/
-│ └── index.html # Frontend HTML page
-├── static/
-│ ├── style.css # Modern gradient CSS
-│ └── script.js # Fetch + result rendering
-├── heart.csv # Dataset for heart model (used in training)
-├── stroke.csv # Dataset for stroke model
-├── diabetes.csv # Dataset for diabetes model
-└── README.md
+## ✨ Features
 
-## Screenshot
+- **Multi-Disease Prediction:** Simultaneously evaluates the risk of **Heart Disease**, **Stroke**, and **Diabetes** using Scikit-Learn predictive models.
+- **Biometric Vitals Processing:** Analyzes complex health indicators including Systolic/Diastolic Blood Pressure, Fasting Glucose, Cholesterol, BMI, and Lifestyle factors (Smoking status).
+- **Automated BP Categorization:** Instantly categorizes Blood Pressure (e.g., Normal, Elevated, Stage 1 Hypertension) according to clinical guidelines.
+- **Premium Clinical UI:** Features an immersive, dark-mode medical dashboard with glassmorphism, glowing custom sliders, and smooth CSS animations (scanning radar effects).
+- **Vercel Serverless Ready:** Optimized Python 3.12 dependencies and routing via `vercel.json` to deploy flawlessly on Vercel's serverless functions.
 
-<img width="389" height="877" alt="Screenshot 2025-10-10 211212" src="https://github.com/user-attachments/assets/12a3321d-44b2-4bca-ac95-9d1f0cfc6ea2" />
+---
 
+## 🛠️ Technology Stack
 
+* **Backend Framework:** Flask (Python 3.12)
+* **Machine Learning:** Scikit-Learn (Predictive models & StandardScaler), Pandas, Numpy
+* **Frontend:** HTML5, Tailwind CSS, Vanilla JavaScript
+* **Deployment:** Vercel (Serverless Functions)
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/healthriskpredictor-main.git
+cd healthriskpredictor-main
+```
+
+### 2. Create a Virtual Environment (Optional but recommended)
+```bash
+python -m venv .venv
+# On Windows:
+.venv\Scripts\activate
+# On Mac/Linux:
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Start the Flask Server
+```bash
+python app.py
+```
+
+### 5. View Dashboard
+Open your browser and navigate to: [http://localhost:5000](http://localhost:5000)
+
+---
+
+## ☁️ How to Deploy on Vercel
+
+This application is fully optimized for Vercel deployment and has been patched for Python 3.12 dependency compatibility.
+
+1. Push your code to a GitHub repository.
+2. Go to your [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New > Project**.
+3. Import your repository.
+4. Click **Deploy**. Vercel will use the provided `vercel.json` and `requirements.txt` to instantly build and deploy your Flask app.
+
+---
+
+## ⚠️ Medical Disclaimer
+**This application is an AI predictive model built for educational and software demonstration purposes only. It is NOT a substitute for professional medical advice, diagnosis, or treatment.**
