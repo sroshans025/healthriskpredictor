@@ -4,55 +4,208 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Health Risk Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                  colors: {
+                      medDark: '#0B1121',
+                      medBlue: '#1E3A8A',
+                      medCyan: '#06B6D4',
+                      medEmerald: '#10B981',
+                      glassBg: 'rgba(15, 23, 42, 0.7)'
+                  }
+              }
+          }
+      }
+  </script>
 </head>
-<body>
-  <div class="container">
-    <h1>Health Risk Predictor</h1>
-    <form id="healthForm">
-      <div class="form-group">
-        <label>Age:</label>
-        <input type="number" id="age" required min="0" max="100">
+<body class="antialiased min-h-screen relative overflow-x-hidden text-gray-100 pb-12">
+
+  <!-- Ambient Bio-Background -->
+  <div class="fixed inset-0 z-[-1] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+  <div class="bg-orb orb-blue"></div>
+  <div class="bg-orb orb-emerald"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 top-0 bg-medDark/80 backdrop-blur-xl border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-medCyan to-blue-600 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              </div>
+              <span class="text-2xl font-bold tracking-tight text-white">Health Risk <span class="text-transparent bg-clip-text bg-gradient-to-r from-medCyan to-emerald-400">Predictor</span></span>
+          </div>
+          <div class="hidden sm:flex px-4 py-1.5 rounded-full border border-medCyan/20 bg-medCyan/10 items-center gap-2 text-sm font-medium text-medCyan">
+              <div class="w-2 h-2 rounded-full bg-medCyan animate-pulse"></div>
+              Clinical AI Engine
+          </div>
       </div>
+  </nav>
 
-      <div class="form-group">
-        <label>Gender:</label>
-        <select id="gender" required>
-          <option value="">Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+  <main class="max-w-6xl mx-auto pt-32 px-6 relative z-10">
+      
+      <header class="text-center mb-16">
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              Biometric <span class="text-transparent bg-clip-text bg-gradient-to-r from-medEmerald to-medCyan">Diagnostic Analysis</span>
+          </h1>
+          <p class="text-lg text-blue-200/60 max-w-2xl mx-auto font-light">
+              Enter your vital statistics below for an AI-driven multi-disease risk assessment.
+          </p>
+      </header>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- INPUT FORM -->
+          <div class="lg:col-span-7 glass-card p-8 rounded-3xl relative overflow-hidden group border border-white/10">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-medCyan to-medEmerald"></div>
+              
+              <div class="flex items-center justify-between mb-8">
+                  <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                      <span>🩺</span> Patient Vitals
+                  </h2>
+                  <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">Secured Entry</span>
+              </div>
+
+              <form id="healthForm" class="space-y-6">
+                  <!-- Demographics -->
+                  <div class="grid grid-cols-2 gap-6 p-5 bg-white/5 rounded-2xl border border-white/5">
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Age (Years)</label>
+                          <input type="number" id="age" required min="0" max="120" placeholder="e.g. 45" class="custom-input rounded-xl p-3">
+                      </div>
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Biological Sex</label>
+                          <select id="gender" required class="custom-input rounded-xl p-3 appearance-none">
+                              <option value="" disabled selected>Select</option>
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <!-- Blood Pressure & Body Metrics -->
+                  <div class="grid grid-cols-2 gap-6 p-5 bg-white/5 rounded-2xl border border-white/5">
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider text-rose-400">Systolic BP</label>
+                          <input type="number" id="systolic" required placeholder="120" class="custom-input rounded-xl p-3">
+                      </div>
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider text-rose-400">Diastolic BP</label>
+                          <input type="number" id="diastolic" required placeholder="80" class="custom-input rounded-xl p-3">
+                      </div>
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider text-emerald-400">BMI</label>
+                          <input type="number" id="bmi" step="0.1" required placeholder="24.5" class="custom-input rounded-xl p-3">
+                      </div>
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider text-orange-400">Cholesterol</label>
+                          <input type="number" id="cholesterol" required placeholder="190" class="custom-input rounded-xl p-3">
+                      </div>
+                  </div>
+
+                  <!-- Lifestyle & Glucose -->
+                  <div class="grid grid-cols-2 gap-6 p-5 bg-white/5 rounded-2xl border border-white/5">
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider text-yellow-400">Fasting Glucose</label>
+                          <input type="number" id="glucose" required placeholder="95" class="custom-input rounded-xl p-3">
+                      </div>
+                      <div class="flex flex-col">
+                          <label class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Smoking Status</label>
+                          <select id="smoking" required class="custom-input rounded-xl p-3 appearance-none">
+                              <option value="" disabled selected>Select</option>
+                              <option value="yes">Current Smoker</option>
+                              <option value="no">Non-Smoker</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <button type="submit" id="predictBtn" class="w-full btn-glow text-white font-bold py-4 px-6 rounded-xl text-lg flex justify-center items-center gap-3 mt-4">
+                      <span>Generate Diagnostic Report</span>
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+              </form>
+          </div>
+
+          <!-- RESULTS PANEL -->
+          <div class="lg:col-span-5 h-full relative">
+              
+              <!-- Default State -->
+              <div id="defaultState" class="glass-card p-8 rounded-3xl h-full flex flex-col items-center justify-center text-center border border-white/10 opacity-100 transition-opacity duration-500">
+                  <div class="w-24 h-24 rounded-full bg-white/5 border-2 border-dashed border-white/20 flex items-center justify-center mb-6 animate-pulse-slow">
+                      <svg class="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-300 mb-2">Awaiting Data</h3>
+                  <p class="text-sm text-gray-500 max-w-[250px]">Enter patient vitals and run diagnostics to view multi-disease risk assessment.</p>
+              </div>
+
+              <!-- Loading State -->
+              <div id="loading" class="glass-card absolute inset-0 rounded-3xl flex flex-col items-center justify-center z-20 border border-medCyan/30 hidden backdrop-blur-2xl bg-medDark/90">
+                  <div class="w-16 h-16 relative">
+                      <div class="absolute inset-0 rounded-full border-t-2 border-medCyan animate-spin"></div>
+                      <div class="absolute inset-2 rounded-full border-b-2 border-medEmerald animate-spin-reverse"></div>
+                  </div>
+                  <h3 class="mt-6 text-lg font-bold text-white tracking-widest uppercase">Processing Array...</h3>
+              </div>
+
+              <!-- Result State -->
+              <div id="result" class="glass-card absolute inset-0 rounded-3xl p-8 flex flex-col z-10 border border-medEmerald/30 hidden bg-medDark/80">
+                  <div class="absolute top-0 right-0 w-40 h-40 bg-medEmerald/10 rounded-full blur-3xl"></div>
+                  
+                  <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                      <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                          <span>📋</span> Medical Report
+                      </h2>
+                      <span class="text-xs font-mono text-medEmerald px-3 py-1 rounded-full border border-medEmerald/30 bg-medEmerald/10">COMPLETED</span>
+                  </div>
+
+                  <div class="space-y-4 flex-grow">
+                      <!-- Heart Risk -->
+                      <div class="bg-black/30 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+                          <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-500">❤️</div>
+                              <span class="font-semibold text-gray-200">Heart Disease</span>
+                          </div>
+                          <span id="heart_risk" class="font-bold text-lg">--</span>
+                      </div>
+
+                      <!-- Diabetes -->
+                      <div class="bg-black/30 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+                          <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">🩸</div>
+                              <span class="font-semibold text-gray-200">Diabetes</span>
+                          </div>
+                          <span id="diabetes" class="font-bold text-lg">--</span>
+                      </div>
+
+                      <!-- Stroke -->
+                      <div class="bg-black/30 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+                          <div class="flex items-center gap-3">
+                              <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">🧠</div>
+                              <span class="font-semibold text-gray-200">Stroke</span>
+                          </div>
+                          <span id="stroke_risk" class="font-bold text-lg">--</span>
+                      </div>
+
+                      <!-- BP Category -->
+                      <div class="bg-black/30 p-4 rounded-2xl border border-white/5 flex flex-col gap-2 mt-6">
+                          <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Blood Pressure Analysis</span>
+                          <span id="bp_category" class="font-bold text-medCyan text-xl">--</span>
+                      </div>
+                  </div>
+
+                  <button id="resetBtn" class="w-full py-3 rounded-xl border border-white/20 text-white font-medium hover:bg-white/5 transition-colors mt-6">
+                      Clear & Check Another Person
+                  </button>
+              </div>
+          </div>
+
       </div>
-
-      <div class="form-group"><label>Systolic BP:</label><input type="number" id="systolic" required></div>
-      <div class="form-group"><label>Diastolic BP:</label><input type="number" id="diastolic" required></div>
-      <div class="form-group"><label>Cholesterol:</label><input type="number" id="cholesterol" required></div>
-      <div class="form-group"><label>Glucose:</label><input type="number" id="glucose" required></div>
-      <div class="form-group"><label>BMI:</label><input type="number" id="bmi" step="0.1" required></div>
-
-      <div class="form-group">
-        <label>Smoking:</label>
-        <select id="smoking" required>
-          <option value="">Select</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-
-      <button type="submit" id="predictBtn">Predict Health Risk</button>
-    </form>
-
-    <div id="loading" class="hidden">Predicting...</div>
-
-    <div id="result" class="hidden">
-      <h2> Health Risk Report</h2>
-      <p id="heart_risk"></p>
-      <p id="diabetes"></p>
-      <p id="stroke_risk"></p>
-      <p id="bp_category"></p>
-      <button id="resetBtn">Check Another Person</button>
-    </div>
-  </div>
+  </main>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
